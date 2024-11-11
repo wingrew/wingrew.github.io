@@ -1,4 +1,4 @@
-source "https://mirrors.aliyun.com/rubygems/"
+source "https://rubygems/"
 gem "jekyll"
 gem "jekyll-paginate-v2"
 gem "jekyll-feed"
