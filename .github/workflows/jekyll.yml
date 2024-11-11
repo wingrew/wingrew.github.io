@@ -12,7 +12,7 @@ jobs:
           ruby-version: '3.1.0'
           bundler-cache: false
       - run: cd ./docs && bundle install
-      - run: bundle exec jekyll build --config _config.yml
+      - run: cd ./docs && bundle exec jekyll build --config _config.yml
       - uses: peaceiris/actions-gh-pages@v3.7.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
