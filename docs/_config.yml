@@ -35,7 +35,7 @@ pwa:
 # Navigation links
 nav:
   home: '/'
-  blog: '/blog/index.html'
+  blog: '/index.html'
   archives: '/archives.html'
   tags: '/tags.html'   
   CV: '/cv.html'
@@ -102,8 +102,8 @@ sns:
 
 # Links 友情链接
 links:
-  'Latency426': 'blog.hifuu.ink'
-  '和煦': 'shalicon.org'
+  'Latency426': 'https://blog.hifuu.ink'
+  '和煦': 'https://shalicon.org'
 
 # Calendar 日历
 calendar: true
