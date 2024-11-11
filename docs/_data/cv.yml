@@ -1,0 +1,104 @@
+- lang: "en"
+  name: "wingrew"
+  motivation: "currently unavailable"
+  photo: "../assets/img/try.jpg"
+  email: "huangxihan@nudt.edu.cn"
+  github: "wingrew"
+  website: "https://wingrew.com"
+  languages:
+    - idiom: "Chinese"
+  educations:
+    - degree: "Bachelor-Computer Science"
+      university: "Double First Class University"
+      time: "2012-now"
+  skills:
+    - title: "Backend Skills"
+      skill: 
+        - C
+        - C++
+        - Python
+        - Rust
+    - title: "DevOps Skills"
+      skill: 
+        - Linux
+  experience:
+    - role: "Process behavior analysis system based on eBPF"
+      company: "Principal"
+      time: "2023.5 - 2024.6"
+      details: "Based on eBPF technology, process behavior is tracked and analyzed, depicting a panoramic view of process behavior Panorama."
+      tech: "tech：Python，eBPF"
+    - role: "A port of a microkernel os application written based on rust"
+      company: "Principal"
+      time: "2024.8 - 2024.9"
+      details: "Based on microkernel architecture, port the classic database application sqlite under linux to some os kernel."
+      tech: "tech：Linux，rust，database，os kernel"
+
+  honors:
+    - 2023 Learning Champion of a Double Topr University    
+    - 2023 Outstanding Student Leaders of Double Top University     
+    - 2023 Varsity Second Class Scholarships for Double Top University    
+    - 2024 First Class Scholarships at the School Level for Double Top University     
+    - 2024 ASC International Student Supercomputing Competition First Prize    
+
+  publications:
+  introduction:
+    - title: "Research"
+      content: "During my undergraduate studies, I was mainly engaged in the study and research of os kernel, and am currently exploring it further, including unikernel, macro kernel, hypervisor, componentized kernel, etc."
+
+
+
+- lang: "zh"
+  name: "wingrew"
+  motivation: "暂无"
+  photo: "../assets/img/try.jpg"
+  email: "huangxihan@nudt.edu.cn"
+  github: "wingrew"
+  website: "https://wingrew.com"
+  languages:
+    - idiom: "普通话"
+  educations:
+    - degree: "本科-计算机科学与技术"
+      university: "双一流大学"
+      time: "2022-至今"
+  skills:
+    - title: "后端技能"
+      skill: 
+        - C
+        - C++
+        - Python
+        - Rust
+    - title: "运维开发技能"
+      skill: 
+        - Docker
+        - Linux
+  experience:
+    - role: "基于eBPF的进程行为分析系统"
+      company: "主要负责人"
+      time: "2023.5 - 2024.6"
+      details: "基于eBPF技术，对进程行为进行跟踪分析，描绘全景图。"
+      tech: "技术：Python，eBPF"
+    - role: "某基于rust编写的微内核os应用移植"
+      company: "主要负责人"
+      time: "2024.8 - 2024.9"
+      details: "基于微内核架构，将linux下经典数据库应用sqlite移植到某os内核上。"
+      tech: "技术：Linux，rust，database，os kernel"
+
+  honors:
+    - 2023 年 双一流大学学习标兵    
+    - 2023 年 双一流大学优秀学生干部     
+    - 2023 年 双一流大学校级二等奖学金     
+    - 2024 年 双一流大学校级一等奖学金     
+    - 2024 年 ASC国际大学生超算竞赛一等奖    
+
+  publications:
+    # - "<b>诸葛亮</b>, 关羽, 张飞, 赵云, 刘备*. 《七出岐山的必要性》. 三国志快报, 2021(1):110-118."
+    # - "<b>诸葛亮</b>, 周瑜, 关羽, 黄盖, 鲁肃, 孙权*, 刘备*. 《吴蜀联盟为什么行》. 三国志简报, 2020(1):110-118."
+    # - "<b>诸葛亮</b>, 周瑜, 荀彧, 曹操*, 孙权*, 刘备*. 《三个国家的浪漫史》. 三国志综述, 2022(1):110-118."
+  introduction:
+    - title: "研究内容"
+      content: "本科生期间主要从事os kernel的学习和研究，目前正在进一步探索，包括unikernel、宏内核、hypervisor、组件化内核等"
+    # - title: "研究内容"
+    #   content: "研究生期间主要从事三国鼎立的研究，在本人的帮助下发展了吴蜀联盟 <sup>[2]</sup>；在后期针对魏国的强大作出了七出岐山的决定 <sup>[1]</sup>；与三国主要负责人合作完成了《三个国家的浪漫史》 <sup>[3]</sup>。"
+    # - title: "开发平台"
+    #   content: "蜀汉建立的元老，为蜀国的发展和强大贡献了力量。（以上内容均为展示效果填充需要，内容请勿当真！！！）"
+

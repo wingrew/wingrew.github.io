@@ -1,0 +1,25 @@
+---
+layout: default
+home-title: H2O Theme For Jekyll
+description: 或许是最漂亮的Jekyll主题
+---
+
+<div
+    class="g-banner home-banner {{ site.theme-color | prepend: 'banner-theme-' }}"
+    data-theme="{{ site.theme-color }}"
+    style="{% if page.header-img %}background: url({{ page.header-img | relative_url }}) no-repeat center center; background-size: cover;{% endif %}"
+>
+    <h2>{{ page.home-title }}</h2>
+    <h3>{{ page.description }}</h3>
+</div>
+
+<main class="g-container home-content">
+    <div class="article-list">
+        {% include layouts/paginate.html %}
+
+        {% if paginator.total_pages > 1 %}
+            {% include layouts/pageNav.html %}
+        {% endif %}
+    </div>
+    {% include layouts/sidebar.html %}
+</main>

@@ -1,0 +1,140 @@
+{% assign lang = page.lang | default: site.default_lang %}
+{% assign locales = site.data.locales[lang] %}
+{% assign panel = locales.panel %}
+<aside class="g-sidebar-wrapper">
+    <div class="g-sidebar">
+        <section class="author-card">
+            <div class="avatar">
+                <img src="{{ site.avatar | relative_url }}" alt="">
+            </div>
+            <div class="author-name" rel="author">{{ site.author }}</div>
+            <div class="bio">
+                <p>{{ site.bio }}</p>
+            </div>
+            <div class="level">
+                <div class="level-item">
+                    <p class="heading">{{ panel.posts }}</p>
+                    <a href="{{ "/archives.html" | prepend: site.baseurl }}">
+                        <p class="title">{{ site.posts | size }}</p>
+                    </a>
+                </div>
+                <div class="level-item">
+                    <p class="heading">{{ panel.categories }}</p>
+                    <a href="{{ "/categories.html" | prepend: site.baseurl }}">
+                        <p class="title">{{ site.categories | size }}</p>
+                    </a>
+                </div>
+                <div class="level-item">
+                    <p class="heading">{{ panel.tags }}</p>
+                    <a href="{{ "/tags.html" | prepend: site.baseurl }}">
+                        <p class="title">{{ site.tags | size }}</p>
+                    </a>
+                </div>
+            </div>
+            {% if site.sns.size > 0 %}
+            <ul id="sns-links" class="sns-links">
+                {% for s in site.sns %}
+                <li>
+                    <a href="{{ s[1] }}" target="_blank" aria-label="{{ s[0] }}">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-{{ s[0] }}"></use>
+                        </svg>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </section>
+        {% if site.calendar %}
+            {% include plugins/others/calendar_block.html %}
+        {% endif %}
+        {% if site.recommend-tags and site.tags.size>0 %}
+        {% assign max_tag_count = 0 %}
+        {% for tag in site.tags %}
+            {% if tag[1].size > max_tag_count %}
+            {% assign max_tag_count = tag[1].size %}
+            {% endif %}
+        {% endfor %}
+        <section class="tags-card">
+            <div class="links" rel="links">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-tags"></use>
+                </svg>                
+                {{ panel.hot_tags }}
+            </div>
+            {% assign pnum = 0 %}
+            {% for i in (1..max_tag_count) reversed %}
+                {% for tag in site.tags %}
+                    {% if tag[1].size == i %}
+                        {% assign pnum = pnum | plus: 1 %}
+                        {% if pnum > site.recommend-condition-size %}
+                            {% break %}
+                        {% endif %}
+                        <a href="{{ "tags.html#" | append: tag[0] | relative_url }}" class="tag">{{ tag[0] }}<sup>{{ i }}</sup></a>
+                    {% endif %}
+                {% endfor %}
+                {% if pnum > site.recommend-condition-size %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        {% if site.links.size > 0 %}
+        <section class="tags-card">
+            <div class="links" rel="links">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-links"></use>
+                </svg>       
+                {{ panel.links }}
+            </div>
+            {% for link in site.links %}
+                <a href="{{ link[1] }}" target="_blank" class="tag" rel="noreferrer"> {{ link[0] }} </a>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        <section class="tags-card">
+            {% assign posts = site.posts | sort: "date" | reverse %}
+            <div class="links">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-new"></use>
+                </svg>       
+                {{ panel.update }}
+            </div>
+            <ul class="latest-articles">
+                {% for post in posts limit:3 %}
+                    <li>
+                        <p class="latest-title">
+                            <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.title }} </a>
+                        </p>
+                        <span class="latest-date">
+                            {% case site.formats.time %}
+                            {% when 0 %}
+                              {{ post.date | date: "%Y-%m-%d" }} 
+                            {% when 1 %}
+                              {{ post.date | date_to_string }}
+                            {% else %}
+                              {{ post.date | date: "%Y年%-m月%-d日"  }}
+                            {% endcase %}
+                        </span>
+                    </li>   
+                {% endfor %}
+            </ul>
+
+        </section>
+
+    </div>
+
+    {% if site.search %}
+        {% if site.search_type == "default" or site.search_type == nil %}
+        <div class="search-card">
+            <input id="search_input" type="text" placeholder="Search..." autocomplete="off">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-search"></use>
+            </svg>
+            <div class="search_result"></div>
+        </div>
+        {% endif %}
+    {% endif %}
+</aside>

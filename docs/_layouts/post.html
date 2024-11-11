@@ -1,0 +1,194 @@
+---
+layout: default
+type: post
+---
+
+{% assign lang = page.lang | default: site.default_lang %}
+{% assign locales = site.data.locales[lang] %}
+{% assign post = locales.post %}
+<div class="g-banner post-header {{ site.postPatterns | prepend: 'post-pattern-' }} {{ site.theme-color | prepend: 'bgcolor-' }} {% unless page.cover %}post-no-cover{% endunless %}"
+    data-theme="{{ site.theme-color }}">
+    <div class="post-wrapper">
+        <div class="post-tags">
+            {% if page.tags.size > 0 %}
+            {% for tag in page.tags %}
+            <a href="{{ " /tags.html#" | append: tag | relative_url }}" class="post-tag">{{ tag }}</a>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <h1>{{ page.title }}</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-user"></use>
+                </svg>
+                {% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}
+            </span>
+            <time class="post-meta-item" datetime="{{ page.date | date:" %y-%m-%d" }}">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-calendar"></use>
+                </svg>
+                <span class="create-at"></span>
+            </time>
+            <time class="post-meta-item" datetime="{{ page.date | date:" %y-%m-%d" }}">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-update"></use>
+                </svg>
+                <span class="update-at"></span>
+            </time>
+            <span class="post-meta-item">
+                <svg class="icon words" aria-hidden="true">
+                    <use xlink:href="#icon-words"></use>
+                </svg>
+                {% assign total_size = page.content | strip_html | strip_newlines | remove: " " | size %}
+                {{ post.cover.total.info }} {% if total_size < 1000 %} {{ total_size }} {% else %} {{ total_size |
+                    divided_by: 1000.0 | round: 1 }}k {% endif %} {{ post.cover.total.unit }} </span>
+                    <span class="post-meta-item">
+                        <svg class="icon time" aria-hidden="true">
+                            <use xlink:href="#icon-time"></use>
+                        </svg>
+                        {{ post.cover.time.info }} {{ page.content | strip_html | strip_newlines | remove: " " | size |
+                        divided_by: 350 | plus: 1 }} {{ post.cover.time.unit }}
+                    </span>
+                    {% if site.busuanzi %}
+                    <span class="post-meta-item">
+                        <svg class="icon pv" aria-hidden="true">
+                            <use xlink:href="#icon-pv"></use>
+                        </svg>
+                        {{ post.cover.view.info }} 
+                        {% if site.busuanzi_url %}
+                        <span id="busuanzi_page_pv"></span>
+                        {% else %}
+                        <span id="busuanzi_value_page_pv"></span>
+                        {% endif %}
+                        {{ post.cover.view.unit }}
+                    </span>
+                    {% endif %}
+                    {% if page.cover_author %}
+                    <span class="post-meta-item">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-image"></use>
+                        </svg>
+                        {% if page.cover_author_link %}
+                        {{ locales.cover }} <a href="{{ page.cover_author_link }}" target="_blank">{{ page.cover_author
+                            }}</a>
+                        {% else %}
+                        {{ locales.cover }} {{ page.cover_author }}
+                        {% endif %}
+                    </span>
+                    {% endif %}
+        </div>
+    </div>
+    {% if page.cover %}
+    <div class="filter"></div>
+    <div class="post-cover"
+        style="background: url('{{ page.cover | relative_url }}') center no-repeat; background-size: cover;"></div>
+    {% endif %}
+</div>
+
+<main class="post-content visible">
+    {% if page.subtitle %}
+    <h2 class="post-subtitle">{{ page.subtitle }}</h2>
+    {% endif %}
+
+    {% assign copyright = post.copyright %}
+
+    <div class="container">
+        {% include layouts/submenu.html %}
+        <div class="contents">
+            <article class="markdown-body post">
+                {% include plugins/i18n.html %}
+                {{ page.content | extlinks }}
+                <div class="post-copyright">
+                    <p>
+                        <span>{{ copyright.statement.name }}：</span>
+                        {{ copyright.statement.left }}
+                        <a href="{{ site.url }}" class="cplink">{{ site.title }}</a>
+                        {{ copyright.statement.middle }}
+                    </p>
+                    {% if site.cclicense %}
+                    <p>
+                        {{ copyright.statement.right1 }}
+                        <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" class="extlinks">CC
+                            BY-NC-SA 4.0</a>
+                        {{ copyright.statement.right2 }}
+                    </p>
+                    {% endif %}
+                    <p><span>{{ copyright.title }}：</span>《 {{ page.title }} 》</p>
+                    <p><span>{{ copyright.link }}：</span><a href="{{ page.url | prepend: site.url }}" class="cplink">{{
+                            page.url | prepend: site.url }}</a></p>
+                    <p class="tips">{{ copyright.statement.outdate1 }} <span></span> {{ copyright.statement.outdate2 }}
+                    </p>
+                </div>
+            </article>
+        </div>
+        {% if page.content contains 'h1' or page.content contains 'h2' or page.content contains 'h3' or page.content
+        contains 'h4' or page.content contains 'h5' or page.content contains 'h6' and site.toc %}
+            <div class="table-of-contents">
+                <div class="toc-header"><h2>{{ post.outline }}</h2></div>
+                <div class="toc-body">
+                    {% include layouts/toc.html html=content %}
+                </div>
+        {% else %}
+            <div class="table-of-contents hidden">
+        {% endif %}
+            </div>
+        </div>
+        {% include plugins/others/social_block.html %}
+</main>
+
+<section class="author-detail">
+    <section class="post-footer-item author-card">
+        <div class="avatar">
+            <img src="{{ site.avatar | relative_url }}" alt="">
+        </div>
+        <div class="author-name" rel="author">{{ site.author }}</div>
+        <div class="bio">
+            <p>{{ site.bio }}</p>
+        </div>
+        {% if site.sns.size > 0 %}
+        <ul class="sns-links">
+            {% for s in site.sns %}
+            <li>
+                <a href="{{ s[1] }}" target="_blank" aria-label="{{ s[0] }}">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-{{ s[0] }}"></use>
+                    </svg>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+    <section class="post-footer-item read-next">
+        {% if page.next.url %}
+        <div class="read-next-item">
+            <a href="{{ page.next.url | relative_url }}" class="read-next-link" aria-label="{{ page.next.title }}"></a>
+            <section>
+                <span>{{ page.next.title }}</span>
+                <p>{{ page.next.excerpt | strip_html | strip_newlines | truncate: 60}}</p>
+            </section>
+            {% if page.next.cover %}
+            <div class="filter"></div>
+            <img src="{{ page.next.cover | relative_url }}" alt="">
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if page.previous.url %}
+        <div class="read-next-item">
+            <a href="{{ page.previous.url | relative_url }}" class="read-next-link"
+                aria-label="{{ page.previous.title }}"></a>
+            <section>
+                <span>{{ page.previous.title }}</span>
+                <p>{{ page.previous.excerpt | strip_html | strip_newlines | truncate: 60}}</p>
+            </section>
+            {% if page.previous.cover %}
+            <div class="filter"></div>
+            <img src="{{ page.previous.cover | relative_url }}" alt="">
+            {% endif %}
+        </div>
+        {% endif %}
+    </section>
+    {% include plugins/comments/comments_block.html %}
+</section>

@@ -1,0 +1,132 @@
+---
+layout: page
+home-title: Welcome to zhonger's blog!
+description: Writing, writing, writing ...
+permalink: /archives.html
+cover: https://images.unsplash.com/photo-1465189684280-6a8fa9b19a7a?w=1600&q=900
+---
+
+{% assign pin_posts = site.posts | where: "pin", "true" | sort: "date" | reverse %}
+{% assign unpin_posts = site.posts | where: "pin", nil | sort: "date" | reverse %}
+{% assign pin_posts_num = pin_posts | size %}
+{% assign unpin_posts_num = unpin_posts | size %}
+{% assign nyear = "1900" %}
+{% assign total_size = 0 %}
+{% assign lang = page.lang | default: site.default_lang %}
+{% assign locales = site.data.locales[lang] %}
+{% assign panel = locales.panel %}
+
+{% for post in site.posts %}
+  {% assign post_size = post.content | strip_html | strip_newlines | remove: " " | size %}
+  {% assign total_size = total_size | plus:post_size %}
+{% endfor %}
+
+{% assign lang = page.lang | default: site.default_lang %}
+{% assign locales = site.data.locales[lang] %}
+{% assign archives = locales.archives%}
+
+<h2>{{ archives.title }}</h2>
+
+<p>
+  {{ archives.total.info }} {{ site.posts | size }} {{ archives.total.unit }}
+  {% if pin_posts_num > 0 %}
+    {{ archives.pin.info }} {{pin_posts_num}} {{ archives.pin.unit }}
+  {% endif %}
+  {{ archives.words.info }} 
+  {% if total_size < 1000 %}
+   {{ total_size }} 
+  {% else %} 
+    {{ total_size | divided_by: 1000.0 | round: 1 }}k 
+  {% endif %}
+  {{ archives.words.unit }}
+</p>
+
+<div id="archive-heatmap">
+  <div id="ex-ghDay2" class="calendar-top">
+      <a id="ex-ghDay-prev2" class="button" href="#" aria-label="Calendar heatmap prev">
+          <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-left"></use>
+          </svg>       
+      </a>
+      <a id="ex-ghDay-next2" class="button" href="#" aria-label="Calendar heatmap next">
+          <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-right"></use>
+          </svg>
+      </a>
+      <a id="ex-ghDay-today2" class="button" href="#" aria-label="Calendar heatmap today">
+          <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-rotate"></use>
+          </svg>
+      </a>
+      <div class="legends">
+          <span class="text">{{panel.calendar_less}}</span>
+          <div id="ex-ghDay-legend2"></div>
+          <span class="text">{{panel.calendar_more}}</span>
+      </div>
+  </div>
+</div>
+
+{% assign ssyears = "rat,ox,tiger,rabbit,dragon,snake,horse,goat,monkey,rooster,dog,pig" | split: "," %}
+
+<div id="archive-articles">
+  {% if pin_posts_num > 0 %}
+  <h3>{{ archives.pin.title }}</h3>
+  <ul>
+    {% for post in pin_posts %}
+      <li>
+        <p class="archives-title">
+          <span class="archives-date">
+            {% case site.formats.time %}
+            {% when 0 %}
+              {{ post.date | date: "%Y-%m-%d" }} 
+            {% when 1 %}
+              {{ post.date | date_to_string }}
+            {% else %}
+              {{ post.date | date: "%Y年%-m月%-d日"  }}
+            {% endcase %}
+          </span>
+          <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.title }} </a>
+        </p>
+      </li>
+    {% endfor %}
+  {% endif %}
+  
+  {% if unpin_posts_num > 0%}
+    {% for post in unpin_posts %}
+      {% assign year = post.date | date: '%Y' %}
+      {% assign animal = year | minus:1900 | modulo:12 %}
+      {% if year != nyear %}
+        {% assign nyear = year %}
+        </ul>
+        <h3 class="year">{{ post.date | date: '%Y' }}
+          <span class="icon-item">
+            <svg class="icon animal" aria-hidden="true">
+              <use xlink:href="#icon-{{ ssyears[animal] }}"></use>
+            </svg>
+            <svg class="icon dz" aria-hidden="true">
+              <use xlink:href="#icon-{{ ssyears[animal]}}_dz"></use>
+            </svg>
+          </span>
+        </h3>
+        <ul>
+      {% endif %}
+  
+      <li>
+        <p class="archives-title">
+          <span class="archives-date">
+            {% case site.formats.time %}
+            {% when 0 %}
+              {{ post.date | date: "%m-%d" }} 
+            {% when 1 %}
+              {{ post.date | date_to_string }}
+            {% else %}
+              {{ post.date | date: "%-m月%-d日"  }}
+            {% endcase %}
+          </span>
+          <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.title }} </a>
+        </p>
+      </li>
+    {% endfor %}
+  {% endif %}
+  </ul>
+</div>

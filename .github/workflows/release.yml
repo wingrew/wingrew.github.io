@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GEM_HOST_API_KEY: ${{ secrets.RUBYGEM_API_KEY }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Set up ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.1.0'
+        bundler-cache: false
+    - run: bundle install
+    - name: Build the gem
+      run: |
+        gem build *.gemspec
+        sha256sum *.gem > sha256sums.txt
+        gem push *.gem
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          *.gem
+          sha256sums.txt

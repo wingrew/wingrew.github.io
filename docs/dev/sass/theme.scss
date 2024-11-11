@@ -1,0 +1,207 @@
+[data-theme='default'] {
+    .g-header {
+        a:hover {
+            color: $color-theme-default !important;
+        }
+
+        .nav-default {
+            .mode {
+                background-color: $color-theme-default-2;
+                border-radius: 50%;
+            }
+        }
+
+        .mode {
+            &:hover {
+                background-color: $color-theme-default !important;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    .submenu li:hover::marker,
+    .submenu li a:hover,
+    .table-of-contents h2,
+    .table-of-contents li.active > a {
+        color: $color-theme-default;
+    }
+
+    .article-item .post-meta .post-tag,
+    .tags-card .tag,
+    .tags-content .tag,
+    .table-of-contents a,
+    .g-footer .links a,
+    .g-footer section a,
+    .post-header .post-tags .post-tag,
+    .tags-content .tag-post,
+    .author-card .level .level-item .title,
+    .g-sidebar section .latest-articles li .latest-title a {
+        @include default;
+    }
+
+    .markdown-body {
+        a:not([ref="gallery"]):not(.button) {
+            background-color: $color-theme-default-4;
+            border-bottom: 2px solid $color-theme-default-2;
+            text-decoration: none;
+            color: inherit;
+
+            &:hover {
+                background-color: $color-theme-default-3;
+                text-decoration: none;
+            }
+        }
+
+        ol li:before {
+            background-color: $color-theme-default-1;
+        }
+        #archive-articles {
+            ul {
+                li:hover:before {
+                    background: $color-theme-default-1;
+                }
+            }
+        }
+    }
+
+    .table-of-contents li.active:before {
+        background-color: $color-theme-default;
+    }
+
+    .search-card {
+        .icon {
+            color: $color-theme-default;
+        }
+    }
+
+    #accept-tos {
+        background-color: $color-theme-default-1;
+
+        &:hover {
+            background-color: $color-theme-default;
+        }
+    }
+}
+
+[data-theme='pink'] {
+    .g-header {
+        a:hover {
+            color: $color-theme-pink !important;
+        }
+
+        .nav-pink {
+            .mode {
+                background-color: $color-theme-pink-2;
+                border-radius: 50%;
+            }
+        }
+
+        .mode {
+            &:hover {
+                background-color: $color-theme-pink !important;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    .submenu li:hover::marker,
+    .submenu li a:hover,
+    .table-of-contents h2,
+    .table-of-contents li.active > a {
+        color: $color-theme-pink;
+    }
+
+    .article-item .post-meta .post-tag,
+    .tags-card .tag,
+    .tags-content .tag,
+    .table-of-contents a,
+    .g-footer .links a,
+    .g-footer section a,
+    .post-header .post-tags .post-tag,
+    .tags-content .tag-post,
+    .author-card .level .level-item .title,
+    .g-sidebar section .latest-articles li .latest-title a:hover {
+        @include pink;
+    }
+
+    .markdown-body {
+        a:not([ref="gallery"]):not(.button) {
+            background-color: $color-theme-pink-4;
+            border-bottom: 2px solid $color-theme-pink-2;
+            text-decoration: none;
+            color: inherit;
+
+            &:hover {
+                background-color: $color-theme-pink-3;
+                text-decoration: none;
+            }
+        }
+
+        ol li:before {
+            background-color: $color-theme-pink-1;
+        }
+
+        #archive-articles {
+            ul {
+                li:hover:before {
+                    background: $color-theme-pink-1;
+                }
+            }
+        }
+
+    }
+
+    .table-of-contents ul li.active:before {
+        background-color: $color-theme-pink;
+    }
+
+    .search-card {
+        .icon {
+            color: $color-theme-pink;
+        }
+    }
+
+    #accept-tos {
+        background-color: $color-theme-pink-1;
+
+        &:hover {
+            background-color: $color-theme-pink;
+        }
+    }
+}
+
+.night-mode {
+    [data-theme='default'] {
+        a.button {
+            color: #aaaaaa;
+        }
+
+        a.button:hover,
+        .g-sidebar .tags-card a.button:hover,
+        .friends .frienddiv:hover {
+            background-color: $color-theme-default-3;
+        }
+
+        .submenu li:hover::marker,
+        .submenu a:hover {
+            color: $color-theme-default;
+        }
+    }
+
+    [data-theme='pink'] {
+        a.button {
+            color: #aaaaaa;
+        }
+
+        a.button:hover,
+        .g-sidebar .tags-card a.button:hover,
+        .friends .frienddiv:hover {
+            background-color: $color-theme-pink-3;
+        }
+
+        .submenu li:hover::marker,
+        .submenu a:hover {
+            color: $color-theme-pink;
+        }
+    }
+}

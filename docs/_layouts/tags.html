@@ -1,0 +1,46 @@
+---
+title: Tags
+layout: default
+---
+
+<div class="g-banner tags-banner {{ site.postPatterns | prepend: 'post-pattern-' }}" data-theme="{{ site.theme-color }}">
+    <h2>TAGS</h2>
+</div>
+
+<main class="tags-content">
+
+    <ul class="tags-list">
+        
+        {% assign max_tag_count = 0 %}
+        {% for tag in site.tags %}
+            {% if tag[1].size > max_tag_count %}
+            {% assign max_tag_count = tag[1].size %}
+            {% endif %}
+        {% endfor %}
+
+        <li>
+        {% for i in (1..max_tag_count) reversed %}
+            {% for tag in site.tags %}
+                {% if tag[1].size == i %}
+                    <a href="{{ page.url }}#{{ tag[0] }}" class="tag">
+                    {{ tag[0] }}<sup>{{ i }}</sup>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        </li>
+        {% for i in (1..max_tag_count) reversed %}
+            {% for tag in site.tags %}
+                {% if tag[1].size == i %}
+                    <li>
+                        <span class="tag-name" id="{{ tag[0] }}">「{{ tag[0] }}」</span>
+                        {% for post in tag[1] %}
+                        <a class="tag-post" href="{{ post.url | relative_url }}" title="{{ post.title }}">{{ post.title }}</a>
+                        {% endfor %}
+                    </li>
+                {% endif %}
+            {% endfor%}
+        {% endfor%}
+        
+    </ul>
+</main>

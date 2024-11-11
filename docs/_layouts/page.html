@@ -1,0 +1,41 @@
+---
+layout: default
+home-title: H2O Theme For Jekyll
+description: 或许是最漂亮的Jekyll主题
+type: page
+---
+
+{% assign lang = page.lang | default: site.default_lang %}
+{% assign locales = site.data.locales[lang] %}
+<div class="g-banner home-banner {{ site.theme-color | prepend: 'banner-theme-' }}" data-theme="{{ site.theme-color }}"
+    style="{% if page.cover %}background: url({{ page.cover | relative_url }}) no-repeat center center; background-size: cover;{% endif %}">
+    <h2>{{ page.home-title }}</h2>
+    <h3>{{ page.description }}</h3>
+    {% if page.cover_author %}
+    <p class="meta-item">
+        <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-image"></use>
+        </svg>
+        {% if page.cover_author_link %}
+        {{ locales.cover }} <a href="{{ page.cover_author_link }}" target="_blank">{{ page.cover_author }}</a>
+        {% else %}
+        {{ locales.cover }} {{ page.cover_author }}
+        {% endif %}
+    </p>
+    {% endif %}
+</div>
+
+<main class="g-container home-content">
+    <div class="article-list">
+        <div class="post-content" style="padding-left: 30px;padding-right: 30px;width: auto;">
+            <article class="markdown-body" style="width: auto;">
+                {% include plugins/i18n.html %}
+                {{ content | extlinks }}
+            </article>
+        </div>
+        <section class="author-detail">
+            {% include plugins/comments/comments_block.html %}
+        </section>
+    </div>
+    {% include layouts/sidebar.html %}
+</main>

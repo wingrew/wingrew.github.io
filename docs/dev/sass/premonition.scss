@@ -1,0 +1,96 @@
+.premonition {
+    p {
+        margin-bottom: 0;
+    }
+    &.note, &.info, &.warning, &.error, &.citation{
+        border-radius: 6.4px;
+        padding: 1rem;
+        margin-bottom: 1em;
+    }
+    &.note{
+        background-color: $color-note-contrast-background;
+        border-left: 5px solid $color-note-darkest;
+        color: $color-note-darkest;
+        code{
+            background-color: $color-note-code-background;
+            color: $color-note-darkest!important;
+        }
+    }
+    &.info{
+        background-color: $color-info-contrast-background;
+        border-left: 5px solid $color-info-dark;
+        color: $color-info-dark;
+        code{
+            background-color: $color-info-code-background;
+            color: $color-info-dark!important;
+        }
+    }
+    &.warning{
+        background-color: $color-warning-contrast-background;
+        border-left: 5px solid $color-warning-dark;
+        color: $color-warning-dark;
+        code{
+            background-color: $color-warning-code-background;
+            color: $color-warning-dark!important;
+        }
+    }
+    &.error{
+        background-color: $color-error-contrast-background;
+        border-left: 5px solid $color-error-dark;
+        color: $color-error-dark;
+        code{
+            background-color: $color-error-code-background;
+            color: $color-error-dark!important;
+        }
+    }
+    &.citation{
+        background-color: $color-citation-contrast-background;
+        border-left: 5px solid $color-citation-darkest;
+        color: $color-citation-darkest;
+        code{
+            background-color: $color-citation-code-background;
+            color: $color-citation-darkest!important;
+        }
+        .ref{
+            text-align: right;
+        }
+    }
+    .header{
+        font-weight: 700;
+        line-height: 17.5px;
+        margin-bottom: 0.3rem;
+    }
+    code{
+        text-shadow: none;
+    }
+    .icon{
+        width: 18px;
+        height: 18px;
+        margin-bottom: -2px;
+        margin-right: 5px;
+    }
+    .title{
+        display: inline-block;
+    }
+}
+
+.night-mode {
+    .premonition {
+        color: #fff;
+        &.note{
+            background-color: $color-note-contrast-foreground;
+        }
+        &.info{
+            background-color: $color-info-contrast-foreground;
+        }
+        &.warning{
+            background-color: $color-warning-contrast-foreground;
+        }
+        &.error{
+            background-color: $color-error-contrast-foreground;
+        }
+        &.citation{
+            background-color: $color-citation-contrast-foreground;
+        }
+    }
+}
