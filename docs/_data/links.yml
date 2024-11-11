@@ -11,10 +11,14 @@ friends:
   - name: "和煦"
     info: "和煦 blog"
     img: "../assets/img/lzd.jpg"
-    url: "shalicon.org"
+    url: "https://shalicon.org"
   - name: "Latency426"
     info: "Latency426 blog"
     img: "../assets/img/cjy.jpg"
-    url: "blog.hifuu.ink"
+    url: "https://blog.hifuu.ink"
+  - name: "Yuxin Zhao"
+    info: "Yuxin Zhao blog"
+    img: "../assets/img/h3.webp"
+    url: "https://zyx040301.github.io/"
 
 
