@@ -8,7 +8,13 @@ links:
     img: "https://cdn-icons-png.flaticon.com/512/5969/5969044.png"
     url: "https://cloudflare.com"
 friends:
+  - name: "和煦"
+    info: "和煦 blog"
+    img: "../assets/img/lzd.jpg"
+    url: "shalicon.org"
   - name: "Latency426"
     info: "Latency426 blog"
     img: "../assets/img/cjy.jpg"
     url: "blog.hifuu.ink"
+
+
