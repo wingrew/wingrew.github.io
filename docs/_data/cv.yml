@@ -10,7 +10,7 @@
   educations:
     - degree: "Bachelor-Computer Science"
       university: "Double First Class University"
-      time: "2012-now"
+      time: "2022-now"
   skills:
     - title: "Backend Skills"
       skill: 
@@ -34,10 +34,10 @@
       tech: "tech：Linux，rust，database，os kernel"
 
   honors:
-    - 2023 Learning Champion of a Double Topr University    
-    - 2023 Outstanding Student Leaders of Double Top University     
-    - 2023 Varsity Second Class Scholarships for Double Top University    
-    - 2024 First Class Scholarships at the School Level for Double Top University     
+    - 2023 Learning Champion of a Double First Class University    
+    - 2023 Outstanding Student Leaders of Double First Class University     
+    - 2023 Varsity Second Class Scholarships for Double First Class University    
+    - 2024 First Class Scholarships at the School Level for Double First Class University     
     - 2024 ASC International Student Supercomputing Competition First Prize    
 
   publications:
