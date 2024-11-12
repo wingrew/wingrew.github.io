@@ -10,8 +10,8 @@ links:
 friends:
   - name: "和煦"
     info: "和煦 blog"
-    img: "../assets/img/lzd.jpg"
-    url: "https://shalicon.org"
+    img: "../assets/img/lzd.png"
+    url: "https://abnerhexu.shalicon.org/"
   - name: "Latency426"
     info: "Latency426 blog"
     img: "../assets/img/cjy.jpg"
