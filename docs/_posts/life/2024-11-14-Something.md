@@ -3,7 +3,7 @@ layout: post
 title: '关于一颗来自近三千年前教育闭环的子弹'
 subtitle: '关于计算机学习的一点点思考'
 date: 2024-11-14 9:23 +0800
-categories: blog
+categories: life
 author: wingrew
 cover: 'https://images.unsplash.com/photo-1529322365446-6efd62aed02e?w=1600&q=900'
 cover_author: 'inma santiago'
