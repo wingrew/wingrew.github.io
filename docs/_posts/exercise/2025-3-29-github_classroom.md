@@ -3,7 +3,7 @@ layout: post
 title: 'github classroom'
 subtitle: '关于如何利用github搭建一个自己的OJ'
 date: 2025-3-29 21:37 +0800
-categories: learn
+categories: exercise
 author: wingrew
 cover: 'https://images.unsplash.com/photo-1529322365446-6efd62aed02e?w=1600&q=900'
 cover_author: 'inma santiago'
@@ -17,18 +17,18 @@ tags:
 
 实质就技术而言并不复杂，但是无奈于github classroom的文档太缺了，配备的autograding机制和成绩收集机制有点太简单了，无法支撑复杂功能，并在踩坑的路上花了很多时间。当然，如果你不是基于classroom存储成绩可能反而会没这么麻烦。你只需要有一个组织，建一个classroom，在classroom里利用模板仓库（主要是编写workflow）生成一个assignment，然后基于一个开源项目获取classroom的数据并生成网页。
 
-你需要orgnazation，classroom，assignment，模板仓库（template CI），测例脚本（各种语言编写的），部署网站仓库。
+你需要organization，classroom，assignment，模板仓库（template CI），测例脚本（各种语言编写的），部署网站仓库。
 
 现在简单讲一下流程。
 
 - 首先，你需要建立一个组织，或者加入一个组织成为这个组织的owner。
-![图片描述](image1.png)
+![图片描述](https://github.com/wingrew/wingrew.github.io/blob/main/docs/_posts/exercise/image1.png)
 
 - 然后，你就可以建立该组织下的classroom了。
-![图片描述](image2.png)
+![图片描述](https://github.com/wingrew/wingrew.github.io/blob/main/docs/_posts/exercise/image2.png)
 
 - 之后，你就可以建立一个assignment了，然后你就可以邀请其他人加入教室，接受任务了，classroom会自动为其他人生成仓库。
-![图片描述](image3.png)
+![图片描述](https://github.com/wingrew/wingrew.github.io/blob/main/docs/_posts/exercise/image3.png)
 
 这几步都很简单自然，最重要的就是github模板仓库的编写。
 
@@ -38,7 +38,7 @@ tags:
 
 现在classroom它自己提供了很简单的写法和一些仓库包括python和js之类的，大家在搭建assignment时就可以看到。
 比如：
-![图片描述](image4.png)
+![图片描述](https://github.com/wingrew/wingrew.github.io/blob/main/docs/_posts/exercise/image4.png)
 你可以根据add_test的选项和你自己测例脚本的配置来自行选择，它会自动帮你生成相应的CI。优点是简单，缺点是无法支撑复杂配置。
 
 如果你的测试脚本是js，那么你可以对其进行一些魔改，或者改用24年之前的仓库版本。
@@ -125,7 +125,7 @@ jobs:
           runners: autogradingriscvglibc,autogradingx86musl
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
-你可以看见这个CI的基本流程，主要是环境搭建、测试和收集成绩报告给classroom。
+你可以看见这个CI的基本流程，主要是环境搭建、测试和收集成绩报告给classroom，有一些小错误，完整版你可以看最后的仓库。
 这里用到的os-autograding是经过魔改后的，我最后用的autograding-grading-reporter也是自己魔改的，当然在这里展示的不是。你可以通过[访问魔改仓库](https://github.com/oscontent25/os-autograding)，因为这实际上是老仓库fork过来的，为了和新的autograding相适配我不得不进行一些魔改。理所当然，为了丰富功能，我对新的[autograding-reporter](https://github.com/oscontent25/autograding-grading-reporter)也进行了适配。
 
 这里给出[测试脚本仓库](https://github.com/oscontent25/EvaluationScript)
