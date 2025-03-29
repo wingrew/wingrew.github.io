@@ -13,24 +13,24 @@ tags:
 - grading
 ---
 
-# 前言
+## 前言
 最近，有机会接触到了利用github的classroom简单设计一个小的操作系统竞赛的OJ，并可以生成排行榜的项目。当然，这其中用到了很多开源项目。
 
 实质就技术而言并不复杂，但是无奈于github classroom的文档太缺了，配备的autograding机制和成绩收集机制有点太简单了，无法支撑复杂功能，并在踩坑的路上花了很多时间。当然，如果你不是基于classroom存储成绩可能反而会没这么麻烦。你只需要有一个组织，建一个classroom，在classroom里利用模板仓库（主要是编写workflow）生成一个assignment，然后基于一个开源项目获取classroom的数据并生成网页。
 
 你需要organization，classroom，assignment，模板仓库（template CI），测例脚本（各种语言编写的），部署网站仓库。
 
-# 基本流程
+## 基本流程
 现在简单讲一下流程。
 
 - 首先，你需要建立一个组织，或者加入一个组织成为这个组织的owner。
-![organization](https://github.com/wingrew/wingrew.github.io/blob/30afd980c383f28dbccf3725c4c36222ed549535/docs/_posts/exercise/image1.png)
+![organization](https://raw.githubusercontent.com/wingrew/wingrew.github.io/main/docs/_posts/exercise/image1.png)
 
 - 然后，你就可以建立该组织下的classroom了。
-![classroom](https://github.com/wingrew/wingrew.github.io/blob/30afd980c383f28dbccf3725c4c36222ed549535/docs/_posts/exercise/image2.png)
+![classroom](https://raw.githubusercontent.com/wingrew/wingrew.github.io/main/docs/_posts/exercise/image2.png)
 
 - 之后，你就可以建立一个assignment了，然后你就可以邀请其他人加入教室，接受任务了，classroom会自动为其他人生成仓库。
-![assignment](https://github.com/wingrew/wingrew.github.io/blob/30afd980c383f28dbccf3725c4c36222ed549535/docs/_posts/exercise/image3.png)
+![assignment](https://raw.githubusercontent.com/wingrew/wingrew.github.io/main/docs/_posts/exercise/image3.png)
 
 这几步都很简单自然，最重要的就是github模板仓库的编写。
 
@@ -40,12 +40,12 @@ tags:
 
 现在classroom它自己提供了很简单的写法和一些仓库包括python和js之类的，大家在搭建assignment时就可以看到。
 比如：
-![add_test](https://github.com/wingrew/wingrew.github.io/blob/30afd980c383f28dbccf3725c4c36222ed549535/docs/_posts/exercise/image4.png)
+![add_test](https://raw.githubusercontent.com/wingrew/wingrew.github.io/main/docs/_posts/exercise/image4.png)
 你可以根据add_test的选项和你自己测例脚本的配置来自行选择，它会自动帮你生成相应的CI。优点是简单，缺点是无法支撑复杂配置。
 
 如果你的测试脚本是js，那么你可以对其进行一些魔改，或者改用24年之前的仓库版本。
 
-# 注意事项
+## 注意事项
 
 在这里无论你是用自动生成的还是自己编写的脚本，你都需要注意以下几点：
 1. CI名必须为Autograding Tests
@@ -140,9 +140,12 @@ jobs:
 
 这里给出一个[完整的CI](https://github.com/oscontent25/os25_test)，这也是上文所说的类似操作系统竞赛的OJ。你可以通过这个template来搭建自己的OJ。
 
-# 结语
+## 结语
 
 关于网站部署，你可以参考[原版](https://github.com/LearningOS/rust-rustlings-ranking)，也可以参考魔改之后的[仓库](https://github.com/LearningOS/oscomptest-grading)，魔改之后相较前面多了各测例得分，你可以自己阅读代码，查看逻辑。本身是由于classroom在同一个assignment下只记录总分，不记录各类测例得分，不然只能用多个模板仓库建立多个assignment，这样很不方便。所以我就魔改os-autograding和autograding-grading-reporter采取特殊的编码方式把各类测例得分编码进总分，再在部署网页的仓库进行相应的解码。
+
+![效果图](https://raw.githubusercontent.com/wingrew/wingrew.github.io/main/docs/_posts/exercise/image5.png)
+
 
 希望能对你有用！
 
